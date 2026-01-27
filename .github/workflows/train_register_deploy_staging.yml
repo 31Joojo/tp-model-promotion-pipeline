@@ -23,7 +23,7 @@ jobs:
 
       - name: Install ML deps
         run: |
-          pip install -r ml/requirements.txt
+          pip install -r src/ml/requirements.txt
 
       - name: Train + register in MLflow
         id: train

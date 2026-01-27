@@ -33,14 +33,14 @@ jobs:
           MODEL_NAME: churn-model
           DATA_VERSION: "dvc:v1" # in a real repo: derive from  `dvc.lock` or commit hash
         run: |
-          python ml/train_and_register.py | tee train_out.json
+          python src/ml/train_and_register.py | tee train_out.json
           echo "result_json=$(cat train_out.json)" >> "$GITHUB_OUTPUT"
 
       - name: Evaluate gate
         env:
           ACCURACY_THRESHOLD: "0.90"
         run: |
-          echo '${{ steps.train.outputs.result_json }}' | python ml/evaluate.py
+          echo '${{ steps.train.outputs.result_json }}' | python src/ml/evaluate.py
 
   deploy_staging:
     needs: train_register

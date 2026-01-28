@@ -70,3 +70,4 @@ jobs:
       - name: Smoke test placeholder
         run: |
           echo "In real life, curl staging /health and /predict here."      
+
